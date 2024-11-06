@@ -75,68 +75,60 @@ const Table = <T,>({ config, header }: Props<T>): ReactElement<Props<T>> => {
     }, [page, rowsPerPage, state?.data]);
 
     return (
-        <div className="my-8 mx-auto lg:w-3/6 px-2 border-2 rounded-2xl bg-white">
-            <div className="flex flex-col space-y-4">
-                {header && (
-                    <div className="text-lg sm:text-xl font-bold p-2 sm:p-4 text-left">
-                        {header}
-                    </div>
-                )}
-                <div className="overflow-x-auto sm:overflow-visible">
-                    <table className="min-w-full divide-y border-1 divide-gray-200 table-fixed">
-                        <thead className="bg-gray-50">
-                            <tr>
-                                {config.columns.map((column, index) => (
-                                    <th
-                                        key={index}
+        <div className="flex flex-col space-y-4">
+            {header && (
+                <div className="text-lg sm:text-xl font-bold p-2 sm:p-4 text-left">{header}</div>
+            )}
+            <div className="overflow-x-auto sm:overflow-visible">
+                <table className="min-w-full divide-y border-1 divide-gray-200 table-fixed">
+                    <thead className="bg-gray-50">
+                        <tr>
+                            {config.columns.map((column, index) => (
+                                <th
+                                    key={index}
+                                    className={clsx(
+                                        column.cls,
+                                        'px-6 py-3 text-xs text-center font-bold uppercase tracking-wider'
+                                    )}
+                                >
+                                    {column.label}
+                                </th>
+                            ))}
+                        </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                        {items?.map((row: any, rowIndex: number) => (
+                            <tr
+                                key={rowIndex}
+                                className="hover:bg-gray-100 transition-colors duration-200"
+                            >
+                                {config.columns.map((column, colIndex) => (
+                                    <td
+                                        key={colIndex}
                                         className={clsx(
                                             column.cls,
-                                            'px-6 py-3 text-xs text-center font-bold uppercase tracking-wider'
+                                            'px-2 py-1 text-sm text-center text-gray-500'
                                         )}
                                     >
-                                        {column.label}
-                                    </th>
+                                        {formatValue(column, row)}
+                                    </td>
                                 ))}
                             </tr>
-                        </thead>
-                        <tbody className="bg-white divide-y divide-gray-200">
-                            {items?.map((row: any, rowIndex: number) => (
-                                <tr
-                                    key={rowIndex}
-                                    className="hover:bg-gray-100 transition-colors duration-200"
-                                >
-                                    {config.columns.map((column, colIndex) => (
-                                        <td
-                                            key={colIndex}
-                                            className={clsx(
-                                                column.cls,
-                                                'px-2 py-1 text-sm text-center text-gray-500'
-                                            )}
-                                        >
-                                            {formatValue(column, row)}
-                                        </td>
-                                    ))}
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            <div className="flex items-center justify-between w-full pb-3">
+                <div className="flex-none w-24">
+                    <RowsPerPageSelector
+                        rowsPerPage={rowsPerPage}
+                        setRowsPerPage={setRowsPerPage}
+                    />
                 </div>
-                <div className="flex items-center justify-between w-full pb-3">
-                    <div className="flex-none w-24">
-                        <RowsPerPageSelector
-                            rowsPerPage={rowsPerPage}
-                            setRowsPerPage={setRowsPerPage}
-                        />
-                    </div>
-                    <div className="flex">
-                        {state.data?.length > 0 && pages > 1 && (
-                            <Pagination
-                                currentPage={page}
-                                totalPages={pages}
-                                onPageChange={setPage}
-                            />
-                        )}
-                    </div>
+                <div className="flex">
+                    {state.data?.length > 0 && pages > 1 && (
+                        <Pagination currentPage={page} totalPages={pages} onPageChange={setPage} />
+                    )}
                 </div>
             </div>
         </div>

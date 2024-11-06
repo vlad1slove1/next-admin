@@ -1,7 +1,7 @@
 import { deleteRequest, get, post, put } from '@/lib/apiHandler';
 import { User } from '@/models/user/userModel';
 
-const PATH_BASE = '/users';
+const PATH_BASE = 'users';
 
 const userService = {
     getAllUsers: async (): Promise<User[]> => {
