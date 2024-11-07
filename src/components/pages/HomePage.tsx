@@ -40,7 +40,7 @@ const HomePage: React.FC = () => {
     return (
         <div className="tg-users d-flex">
             <div className="my-8 mx-auto lg:w-3/6 px-2 border-2 rounded-2xl bg-white">
-                <SettingsModal className="m-2" />
+                <SettingsModal />
                 <Table header="Список подключенных к парсеру" config={config} />
             </div>
         </div>
