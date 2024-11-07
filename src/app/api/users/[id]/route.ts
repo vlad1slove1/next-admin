@@ -12,7 +12,6 @@ export async function PUT(request: NextRequest) {
         }
 
         const user: User = await request.json();
-        console.log(user);
         const updatedUser = await postgres.update<User>(
             'tg_user',
             Number(id),

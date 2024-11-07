@@ -4,6 +4,7 @@ import DeleteButton from '@/components/DeleteButton';
 import SwitchToggle from '@/components/SwitchToggle';
 import Table from '@/components/table/Table';
 import { TableConfig } from '@/components/table/tableConfig';
+import SettingsModal from '@/components/SettingsModal';
 import { UserField } from '@/models/user/userField';
 import { User } from '@/models/user/userModel';
 import userService from '@/services/userService';
@@ -38,7 +39,10 @@ const config = TableConfig.builder<User>()
 const HomePage: React.FC = () => {
     return (
         <div className="tg-users d-flex">
-            <Table header="Список подключенных к парсеру" config={config} />
+            <div className="my-8 mx-auto lg:w-3/6 px-2 border-2 rounded-2xl bg-white">
+                <SettingsModal className="m-2" />
+                <Table header="Список подключенных к парсеру" config={config} />
+            </div>
         </div>
     );
 };
