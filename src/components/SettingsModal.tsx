@@ -12,7 +12,7 @@ import {
 import settingsService from '@/services/settingsService';
 import util from '@/utils/util';
 
-const SettingsModal: React.FC<{ className?: string }> = ({ className }) => {
+const SettingsModal: React.FC = () => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [settings, setSettings] = useState<Map<string, string>>(new Map());
     const [isLoading, setIsLoading] = useState(false);
@@ -59,11 +59,11 @@ const SettingsModal: React.FC<{ className?: string }> = ({ className }) => {
     const sortedSettings = util.sortMap(settings, keys);
 
     return (
-        <div className={className}>
-            <Button onPress={onOpen} color="primary">
+        <div className="m-2">
+            <Button onClick={onOpen} color="primary" className="max-w-fit">
                 Изменить данные
             </Button>
-            <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
+            <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="auto">
                 <ModalContent>
                     {(onClose) => (
                         <>
@@ -84,10 +84,10 @@ const SettingsModal: React.FC<{ className?: string }> = ({ className }) => {
                                 {error && <div className="text-red-500">{error}</div>}
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="danger" variant="flat" onPress={onClose}>
+                                <Button color="danger" variant="flat" onClick={onClose}>
                                     Отменить
                                 </Button>
-                                <Button color="primary" isLoading={isLoading} onPress={handleSave}>
+                                <Button color="primary" isLoading={isLoading} onClick={handleSave}>
                                     Сохранить
                                 </Button>
                             </ModalFooter>
