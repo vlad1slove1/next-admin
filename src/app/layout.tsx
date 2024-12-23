@@ -1,5 +1,4 @@
-import ContextProvider from '@/providers/ContextProvider';
-import { NextUIProvider } from '@nextui-org/react';
+import Providers from '@/app/providers';
 import type { Metadata } from 'next';
 import './globals.css';
 import React from 'react';
@@ -14,11 +13,9 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body>
-                <NextUIProvider>
-                    <ContextProvider>{children}</ContextProvider>
-                </NextUIProvider>
+                <Providers>{children}</Providers>
             </body>
         </html>
     );
