@@ -162,3 +162,9 @@ Here are some useful npm scripts:
    ```
 
 Now app is up and running on http://localhost:3000
+
+### Assets
+
+![Login page](https://drive.google.com/uc?id=15xLEE6BsxCcNe-5itX79Uu9Ow4f5R-0r)
+
+![Main page](https://drive.google.com/uc?id=1UJw7t83iMn0gLqyI_AxshY8GSFN-99sQ)
