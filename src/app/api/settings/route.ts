@@ -2,6 +2,8 @@ import postgres from '@/lib/postgres';
 import { Setting } from '@/models/setting';
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 // Function to get settings based on provided keys
 const getSettings = async (keys: string[]): Promise<Map<string, string>> => {
     const placeholders = keys.map((_, index) => `$${index + 1}`).join(', ');
