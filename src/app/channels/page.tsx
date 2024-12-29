@@ -1,10 +1,10 @@
-import HomePage from '@/components/pages/HomePage';
+import ChannelsPage from '@/components/pages/ChannelsPage';
 import PageLayout from '@/components/pages/PageLayout';
 
-export default function Home() {
+export default function Page() {
     return (
         <PageLayout showHeader={true}>
-            <HomePage />
+            <ChannelsPage />
         </PageLayout>
     );
 }
